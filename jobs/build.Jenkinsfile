@@ -308,7 +308,7 @@ lock(resource: "build-${params.STREAM}") {
                 // builder image from either registry.stage.redhat.io
                 // or registry.redhat.io.
                 pipeutils.withOptionalRegistryPullCredential([file(variable: 'REGISTRY_AUTH_FILE',
-                                                             credentialsId: 'bootc-builder-img-pull-registry-secret')]) {
+                                                             credentialsId: 'oscontainer-push-registry-secret')]) {
                     shwrap("""
                     cosa shell -- env REGISTRY_AUTH_FILE=\${REGISTRY_AUTH_FILE:-} \
                         cosa build ostree ${strict_build_param} --skip-prune ${force} ${version_arg} ${parent_arg}
